@@ -1,53 +1,103 @@
 
+/* General Styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
+    color: #333;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header */
+.header {
+    background: #003366;
+    color: #fff;
+    padding: 1rem 0;
     text-align: center;
-    background-color: #f7f7f7;
 }
-header {
-    padding: 50px 20px;
-    background-color: #4a90e2;
-    color: white;
+
+.header nav a {
+    color: #fff;
+    margin: 0 1rem;
+    text-decoration: none;
 }
-h1 {
-    font-size: 3em;
-    margin: 0;
+
+/* Hero Section */
+.hero {
+    background: #f4f4f4;
+    text-align: center;
+    padding: 2rem 0;
 }
-section {
-    padding: 40px 20px;
-}
-h2 {
-    font-size: 2em;
-    margin-bottom: 20px;
-}
-.headshot {
-    width: 100%;
-    max-width: 300px;
+
+.hero img {
     border-radius: 50%;
-    margin-bottom: 20px;
+    max-width: 150px;
+    margin-bottom: 1rem;
 }
-form {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    display: inline-block;
+
+.hero h2 {
+    font-size: 2rem;
+    margin: 1rem 0;
 }
-input, textarea {
+
+.hero .btn {
+    background: #003366;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+/* About Section */
+.about {
+    background: #fff;
+    padding: 2rem 0;
+}
+
+.about h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+/* Contact Section */
+.contact {
+    background: #f4f4f4;
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.contact form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.contact input, .contact textarea {
     width: 100%;
-    margin-bottom: 15px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
-button {
-    padding: 10px 20px;
+
+.contact .btn {
+    background: #003366;
+    color: #fff;
+    padding: 0.5rem 1rem;
     border: none;
-    background-color: #4a90e2;
-    color: white;
-    font-size: 1em;
+    border-radius: 5px;
     cursor: pointer;
-    border-radius: 4px;
+}
+
+/* Footer */
+.footer {
+    background: #003366;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 2rem;
 }

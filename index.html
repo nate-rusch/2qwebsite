@@ -5,34 +5,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2Q Consulting</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <header>
-        <h1>2Q Consulting</h1>
-        <p>Your trusted partner for asking the right questions.</p>
+    <header class="header">
+        <div class="container">
+            <h1>2Q Consulting</h1>
+            <nav>
+                <a href="#about">About Us</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
     </header>
-    <section id="about">
-        <h2>About Us</h2>
-        <img src="headshot.jpeg" alt="Nate Rusch" class="headshot">
-        <p>At <strong>2Q Consulting</strong>, questions drive innovation. The name "2Q" stems from founder Nate Rusch's philosophy that there are always <em>two more questions</em> to be asked—questions that uncover deeper insights and fuel smarter solutions.</p>
-        <p>Nate’s consulting philosophy centers on the “People, Process, Platform” ideology: understanding the people who make the organization thrive and their roles, analyzing and refining the processes by which the organization operates, and only then tailoring the technology platform to support and elevate your goals. This ensures that the solutions developed are human-centered, sustainable, and impactful.</p>
-        <p>Nate’s extensive experience in technology and consulting shapes 2Q Consulting into a trusted partner for businesses seeking growth, efficiency, and resilience. Our mission is to ask the right questions, challenge assumptions, and create custom solutions that empower organizations to thrive in an ever-changing landscape.</p>
+
+    <section class="hero">
+        <div class="container">
+            <img src="assets/images/headshot.jpeg" alt="Nate Rusch Headshot" class="headshot">
+            <h2>Always Asking Questions. Always Innovating.</h2>
+            <p>At 2Q Consulting, we combine strategy, curiosity, and expertise to solve your toughest challenges.</p>
+            <a href="#about" class="btn">Learn More</a>
+        </div>
     </section>
-    <section id="contact">
-        <h2>Contact Us</h2>
-        <form>
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-            
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
-            
-            <button type="submit">Send Message</button>
-        </form>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Us</h2>
+            <div class="content">
+                <p>
+                    2Q comes from the idea that Nate always has two more questions to ask, ensuring that we explore every angle and deliver solutions tailored to your needs.
+                </p>
+                <p>
+                    My consulting philosophy centers on the <strong>“People, Process, Platform”</strong> ideology: understanding the people who make the organization thrive and their roles, analyzing and refining the processes by which the organization operates, and only then tailoring the technology platform to support and elevate your goals. This ensures that the solutions I develop are human-centered, sustainable, and impactful.
+                </p>
+            </div>
+        </div>
     </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Contact</h2>
+            <form action="#" method="post">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 2Q Consulting. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>
