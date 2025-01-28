@@ -61,9 +61,9 @@ body {
     color: #fff;
     margin-top: 20px;
 }
-/* Hide nav menu on small screens */
+/* Initial styles for the nav menu */
 #nav-menu {
-    display: none;
+    display: none; /* Hidden by default */
     flex-direction: column;
     background: #003366;
     position: absolute;
@@ -72,6 +72,7 @@ body {
     width: 150px;
     border-radius: 5px;
     text-align: center;
+    z-index: 1000; /* Make sure it appears on top */
 }
 
 #nav-menu a {
@@ -92,7 +93,7 @@ body {
     border: none;
     color: white;
     cursor: pointer;
-    display: none; /* Hide by default */
+    display: none; /* Hidden by default, shown on small screens */
 }
 
 /* Show Hamburger on Small Screens */
@@ -100,18 +101,8 @@ body {
     .hamburger {
         display: block;
     }
-    
-    #nav-menu {
-        display: none; /* Initially hidden */
-        position: absolute;
-        right: 10px;
-        top: 60px;
-        background: #003366;
-        width: 150px;
-        border-radius: 5px;
-    }
 
     #nav-menu.active {
-        display: flex;
+        display: flex; /* Display the menu when 'active' class is added */
     }
 }
