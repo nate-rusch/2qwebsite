@@ -61,3 +61,57 @@ body {
     color: #fff;
     margin-top: 20px;
 }
+/* Hide nav menu on small screens */
+#nav-menu {
+    display: none;
+    flex-direction: column;
+    background: #003366;
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    width: 150px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+#nav-menu a {
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+    display: block;
+}
+
+#nav-menu a:hover {
+    background: #0056b3;
+}
+
+/* Hamburger Button */
+.hamburger {
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: none; /* Hide by default */
+}
+
+/* Show Hamburger on Small Screens */
+@media screen and (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+    
+    #nav-menu {
+        display: none; /* Initially hidden */
+        position: absolute;
+        right: 10px;
+        top: 60px;
+        background: #003366;
+        width: 150px;
+        border-radius: 5px;
+    }
+
+    #nav-menu.active {
+        display: flex;
+    }
+}
