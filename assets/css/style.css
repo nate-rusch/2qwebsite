@@ -107,8 +107,23 @@ body {
         display: block;
     }
 }
+/* Default Logo Style */
 .logo {
-    max-width: 150px; /* Adjust width as needed */
-    height: auto;     /* Maintain aspect ratio */
+    max-width: 150px;
+    height: auto;
     margin-right: 20px;
+}
+
+/* Adjust for larger screens if needed */
+@media screen and (min-width: 1024px) {
+    .logo {
+        max-width: 120px; /* Adjust as needed */
+    }
+}
+
+/* Optional: Adjust on smaller mobile screens */
+@media screen and (max-width: 768px) {
+    .logo {
+        max-width: 100px; /* Adjust as needed for mobile */
+    }
 }
