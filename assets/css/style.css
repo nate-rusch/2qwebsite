@@ -74,21 +74,37 @@ section {
 
 .experience-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);  /* Changed to 3 columns for 6 items */
+    grid-template-columns: repeat(3, 1fr);
     gap: 30px;
     margin-top: 40px;
     width: 100%;
 }
 
+/* Tablet adjustments */
 @media screen and (max-width: 1024px) {
     .experience-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
     }
 }
 
+/* Mobile adjustments */
 @media screen and (max-width: 768px) {
+    .container {
+        padding: 0 15px;  /* Slightly reduced padding */
+    }
+
     .experience-grid {
         grid-template-columns: 1fr;
+        gap: 20px;
+        width: calc(100% - 30px);  /* Account for container padding */
+        margin: 40px auto 0;
+    }
+
+    .experience-item {
+        margin: 0 auto;
+        width: 100%;
+        max-width: 500px;  /* Prevent items from getting too wide on larger phones */
     }
 }
 
