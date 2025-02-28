@@ -88,62 +88,55 @@ section {
     }
 }
 
-/* Mobile adjustments */
-@media screen and (max-width: 768px) {
+/* Single column layout adjustments */
+@media screen and (max-width: 765px) {
     .container,
     .about .content,
     .experience-grid {
-        padding: 0 15px;
-        width: 100%;
+        width: calc(100% - 30px);  /* Consistent width with 15px padding on each side */
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0;
         box-sizing: border-box;
     }
 
     .experience-grid {
         grid-template-columns: 1fr;
         gap: 20px;
-        margin: 20px 0 0 0;  /* Remove any horizontal margin */
+        margin-top: 20px;
     }
 
     .experience-item {
         width: 100%;
         margin: 0;
+        padding: 20px;
         box-sizing: border-box;
     }
 }
 
-/* Small screens (like iPhone) */
-@media screen and (max-width: 400px) {
+/* Medium-small screens */
+@media screen and (max-width: 445px) {
     .container,
-    .about .content {
-        padding: 0 8px;
-    }
-
+    .about .content,
     .experience-grid {
-        padding: 0;  /* Remove grid padding */
-        margin: 20px 8px 0;  /* Add margin instead of padding */
-    }
-
-    .experience-item {
-        padding: 15px;
-        width: 100%;
-        margin: 0;
-        box-sizing: border-box;
+        width: calc(100% - 16px);  /* Consistent width with 8px padding on each side */
+        margin-left: auto;
+        margin-right: auto;
     }
 }
 
 /* Extra small screens */
 @media screen and (max-width: 320px) {
     .container,
-    .about .content {
-        padding: 0 5px;
-    }
-
+    .about .content,
     .experience-grid {
-        margin: 20px 5px 0;  /* Match container padding */
+        width: calc(100% - 10px);  /* Consistent width with 5px padding on each side */
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .experience-item {
-        padding: 12px;
+        padding: 15px;
     }
 }
 
