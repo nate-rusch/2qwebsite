@@ -7,7 +7,7 @@ body {
 }
 
 .header {
-    background: #333;
+    background: #0c1e43;
     color: #fff;
     padding: 10px 0;
 }
@@ -182,7 +182,7 @@ section {
 .btn {
     display: inline-block;
     padding: 12px 24px;
-    background: #003366;
+    background: #0c1e43;
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
@@ -190,13 +190,13 @@ section {
 }
 
 .btn:hover {
-    background: #004d99;
+    background: #1a3160;
 }
 
 .footer {
     text-align: center;
     padding: 10px 0;
-    background: #333;
+    background: #0c1e43;
     color: #fff;
     margin-top: 20px;
 }
