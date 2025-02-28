@@ -158,3 +158,15 @@ body {
         max-width: 100px; /* Adjust as needed for mobile */
     }
 }
+
+.contact {
+    text-align: center;
+    padding: 60px 20px;
+    background: #f4f4f4;
+}
+
+.contact .btn {
+    margin-top: 20px;
+    font-size: 1.1em;
+    min-width: 200px;
+}
