@@ -59,16 +59,34 @@ section {
 }
 
 .about .content {
-    max-width: 100%;
+    max-width: 1200px;
     margin: 0 auto;
+}
+
+.about h2 {
+    max-width: 1200px;
+    margin: 0 auto 30px;
+    padding: 0 20px;
 }
 
 .experience-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(3, 1fr);  /* Changed to 3 columns for 6 items */
     gap: 30px;
     margin-top: 40px;
     width: 100%;
+}
+
+@media screen and (max-width: 1024px) {
+    .experience-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .experience-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .experience-item {
@@ -76,6 +94,20 @@ section {
     padding: 25px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.experience-item.partner-box {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.partner-box img {
+    max-width: 200px;
+    height: auto;
+    margin: 20px auto;
 }
 
 .btn {
