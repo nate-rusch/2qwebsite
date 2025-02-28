@@ -93,15 +93,14 @@ section {
     .container,
     .about .content,
     .experience-grid {
-        padding: 0 15px;  /* Consistent padding for all containers */
+        padding: 0 15px;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .experience-grid {
         grid-template-columns: 1fr;
         gap: 20px;
-        margin: 40px 0 0 0;
-        width: 100%;
-        box-sizing: border-box;
     }
 
     .experience-item {
@@ -111,27 +110,28 @@ section {
     }
 }
 
-/* Extra small devices */
-@media screen and (max-width: 375px) {
+/* Small screens */
+@media screen and (max-width: 400px) {
     .container,
     .about .content,
     .experience-grid {
-        padding: 0 8px;  /* Consistent smaller padding */
+        padding: 0 8px;  /* Consistent padding on both sides */
     }
 
     .experience-item {
         padding: 15px;
+        width: 100%;
+        margin: 0;
+        box-sizing: border-box;
     }
 }
 
-/* Even smaller devices */
+/* Extra small screens */
 @media screen and (max-width: 320px) {
-    .about .content {
-        padding: 0 5px;
-    }
-
+    .container,
+    .about .content,
     .experience-grid {
-        padding: 0 5px;
+        padding: 0 5px;  /* Minimum padding for very small screens */
     }
 
     .experience-item {
