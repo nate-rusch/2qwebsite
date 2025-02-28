@@ -106,7 +106,7 @@ section {
 .partner-box img {
     max-width: 200px;
     height: auto;
-    margin: 20px 0;  /* Changed from margin: 20px auto */
+    margin: 0 0 20px 0;  /* Adjusted margin to look better without header */
 }
 
 .btn {
