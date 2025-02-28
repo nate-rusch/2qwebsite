@@ -107,7 +107,8 @@ section {
     max-width: 300px;  /* Adjusted for horizontal logo */
     height: auto;
     margin: 0 auto 20px auto;  /* Center the image with auto left/right margins */
-    align-self: center;  /* Center the image within the flex container */
+    display: block;  /* Ensure block display */
+    width: 100%;     /* Take full width */
 }
 
 .btn {
