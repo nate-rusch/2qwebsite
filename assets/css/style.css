@@ -90,21 +90,38 @@ section {
 
 /* Mobile adjustments */
 @media screen and (max-width: 768px) {
-    .container {
-        padding: 0 15px;  /* Slightly reduced padding */
+    .about .content {
+        padding: 0 15px;
     }
 
     .experience-grid {
         grid-template-columns: 1fr;
         gap: 20px;
-        width: calc(100% - 30px);  /* Account for container padding */
-        margin: 40px auto 0;
+        padding: 0 15px;
+        margin: 40px 0 0 0;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .experience-item {
-        margin: 0 auto;
         width: 100%;
-        max-width: 500px;  /* Prevent items from getting too wide on larger phones */
+        margin: 0;
+        box-sizing: border-box;
+    }
+}
+
+/* Extra small devices */
+@media screen and (max-width: 375px) {
+    .about .content {
+        padding: 0 10px;
+    }
+
+    .experience-grid {
+        padding: 0 10px;
+    }
+
+    .experience-item {
+        padding: 20px;
     }
 }
 
