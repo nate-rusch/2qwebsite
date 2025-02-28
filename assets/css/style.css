@@ -104,36 +104,30 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 40px 25px;  /* Increased padding for better logo display */
+    padding: 40px 25px;
 }
 
-.partner-box img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-}
-
-/* Show vertical logo by default (3 and 2 column layouts) */
-.partner-box img[src*="Salesforce-Partner_hrz"] {
-    display: none;
-}
-
-.partner-box img[src*="Salesforce-Partner.png"] {
+/* Vertical logo (default for desktop/tablet) */
+.logo-vertical {
     display: block;
     max-width: 200px;
     margin: 0 auto;
 }
 
-/* Switch to horizontal logo for mobile (1 column layout) */
+.logo-horizontal {
+    display: none;
+}
+
+/* Switch to horizontal logo for mobile */
 @media screen and (max-width: 768px) {
-    .partner-box img[src*="Salesforce-Partner_hrz"] {
+    .logo-vertical {
+        display: none;
+    }
+    
+    .logo-horizontal {
         display: block;
         max-width: 300px;
         margin: 0 auto;
-    }
-    
-    .partner-box img[src*="Salesforce-Partner.png"] {
-        display: none;
     }
 }
 
