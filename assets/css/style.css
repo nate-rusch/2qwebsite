@@ -100,13 +100,14 @@ section {
 .experience-item.partner-box {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;  /* Change from center to flex-start */
+    align-items: flex-start;  /* Keep general left alignment */
 }
 
 .partner-box img {
-    max-width: 200px;
+    max-width: 300px;  /* Adjusted for horizontal logo */
     height: auto;
-    margin: 0 0 20px 0;  /* Adjusted margin to look better without header */
+    margin: 0 auto 20px auto;  /* Center the image with auto left/right margins */
+    align-self: center;  /* Center the image within the flex container */
 }
 
 .btn {
