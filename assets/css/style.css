@@ -94,20 +94,19 @@ section {
     padding: 25px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    text-align: left;  /* Force left alignment for all items */
 }
 
 .experience-item.partner-box {
-    text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    align-items: flex-start;  /* Change from center to flex-start */
 }
 
 .partner-box img {
     max-width: 200px;
     height: auto;
-    margin: 20px auto;
+    margin: 20px 0;  /* Changed from margin: 20px auto */
 }
 
 .btn {
