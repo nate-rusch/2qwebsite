@@ -61,12 +61,15 @@ section {
 .about .content {
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
 }
 
 .about h2 {
     max-width: 1200px;
     margin: 0 auto 30px;
     padding: 0 20px;
+    box-sizing: border-box;
 }
 
 .experience-grid {
@@ -99,16 +102,39 @@ section {
 
 .experience-item.partner-box {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;  /* Keep general left alignment */
+    justify-content: center;
+    align-items: center;
+    padding: 40px 25px;  /* Increased padding for better logo display */
 }
 
 .partner-box img {
-    max-width: 300px;  /* Adjusted for horizontal logo */
+    max-width: 100%;
     height: auto;
-    margin: 0 auto 20px auto;  /* Center the image with auto left/right margins */
-    display: block;  /* Ensure block display */
-    width: 100%;     /* Take full width */
+    display: block;
+}
+
+/* Show vertical logo by default (3 and 2 column layouts) */
+.partner-box img[src*="Salesforce-Partner_hrz"] {
+    display: none;
+}
+
+.partner-box img[src*="Salesforce-Partner.png"] {
+    display: block;
+    max-width: 200px;
+    margin: 0 auto;
+}
+
+/* Switch to horizontal logo for mobile (1 column layout) */
+@media screen and (max-width: 768px) {
+    .partner-box img[src*="Salesforce-Partner_hrz"] {
+        display: block;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    
+    .partner-box img[src*="Salesforce-Partner.png"] {
+        display: none;
+    }
 }
 
 .btn {
