@@ -70,7 +70,7 @@
                 console.log('Raw response:', response);
                 const data = await response.json();
                 console.log('Parsed data:', data);
-                return data.response;
+                return data.answer;
             } catch (error) {
                 console.error('Detailed error:', error);
                 return 'Sorry, there was an error processing your request.';
