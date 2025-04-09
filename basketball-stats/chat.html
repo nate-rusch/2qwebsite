@@ -54,9 +54,31 @@
     <script>
         const API_URL = 'https://wbb-insights-rag-5ddf10044bcd.herokuapp.com/ask';
 
+        async function queryBasketballInsights(question) {
+            try {
+                console.log('Sending request:', question);
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        text: question
+                    })
+                });
+                
+                console.log('Raw response:', response);
+                const data = await response.json();
+                console.log('Parsed data:', data);
+                return data.response;
+            } catch (error) {
+                console.error('Detailed error:', error);
+                return 'Sorry, there was an error processing your request.';
+            }
+        }
+
         async function sendMessage() {
             const input = document.getElementById('userInput');
-            const chatBox = document.getElementById('chatBox');
             const message = input.value;
             
             if (!message) return;
@@ -65,21 +87,8 @@
             appendMessage(message, 'user');
             input.value = '';
 
-            try {
-                const response = await fetch(API_URL, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ text: message })
-                });
-
-                const data = await response.json();
-                appendMessage(data.response, 'bot');
-            } catch (error) {
-                console.error('Error:', error);
-                appendMessage('Sorry, there was an error processing your request.', 'bot');
-            }
+            const response = await queryBasketballInsights(message);
+            appendMessage(response, 'bot');
         }
 
         function appendMessage(message, sender) {
