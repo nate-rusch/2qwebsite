@@ -40,6 +40,16 @@
             margin-right: 20%;
             white-space: pre-wrap;
         }
+        .bot-sources-message {
+            background-color: #f0f0f0;
+            margin-right: 20%;
+            font-family: monospace;
+            font-size: 0.9em;
+        }
+        .bot-sources-message pre {
+            margin: 0;
+            white-space: pre-wrap;
+        }
     </style>
 </head>
 <body>
@@ -70,10 +80,16 @@
                 console.log('Raw response:', response);
                 const data = await response.json();
                 console.log('Parsed data:', data);
-                return data.response;
+                return {
+                    answer: data.answer,
+                    sources: data.sources
+                };
             } catch (error) {
                 console.error('Detailed error:', error);
-                return 'Sorry, there was an error processing your request.';
+                return {
+                    answer: 'Sorry, there was an error processing your request.',
+                    sources: ''
+                };
             }
         }
 
@@ -88,14 +104,23 @@
             input.value = '';
 
             const response = await queryBasketballInsights(message);
-            appendMessage(response, 'bot');
+            // Display answer and sources separately
+            appendMessage(response.answer, 'bot');
+            if (response.sources) {
+                appendMessage(response.sources, 'bot-sources');
+            }
         }
 
         function appendMessage(message, sender) {
             const chatBox = document.getElementById('chatBox');
             const messageDiv = document.createElement('div');
             messageDiv.className = `message ${sender}-message`;
-            messageDiv.textContent = message;
+            // Use innerHTML for sources to preserve formatting
+            if (sender === 'bot-sources') {
+                messageDiv.innerHTML = `<pre>${message}</pre>`;
+            } else {
+                messageDiv.textContent = message;
+            }
             chatBox.appendChild(messageDiv);
             chatBox.scrollTop = chatBox.scrollHeight;
         }
