@@ -1,25 +1,31 @@
-// functions/slack-oauth-callback.js
+// netlify/functions/slack-oauth-callback.js
 
-export async function onRequestGet(context) {
-  const { request, env } = context;
-  const url = new URL(request.url);
-  
-  const code = url.searchParams.get('code');
-  const error = url.searchParams.get('error');
+exports.handler = async (event, context) => {
+  // Only handle GET requests
+  if (event.httpMethod !== 'GET') {
+    return {
+      statusCode: 405,
+      body: 'Method not allowed'
+    };
+  }
+
+  const { code, error } = event.queryStringParameters || {};
   
   // Check for OAuth errors
   if (error) {
-    return new Response(createErrorPage(error), {
+    return {
+      statusCode: 400,
       headers: { 'Content-Type': 'text/html' },
-      status: 400
-    });
+      body: createErrorPage(error)
+    };
   }
   
   if (!code) {
-    return new Response(createErrorPage('No authorization code received'), {
+    return {
+      statusCode: 400,
       headers: { 'Content-Type': 'text/html' },
-      status: 400
-    });
+      body: createErrorPage('No authorization code received')
+    };
   }
   
   try {
@@ -31,8 +37,8 @@ export async function onRequestGet(context) {
       },
       body: new URLSearchParams({
         code: code,
-        client_id: env.SLACK_CLIENT_ID,
-        client_secret: env.SLACK_CLIENT_SECRET,
+        client_id: process.env.SLACK_CLIENT_ID,
+        client_secret: process.env.SLACK_CLIENT_SECRET,
       }),
     });
     
@@ -42,51 +48,69 @@ export async function onRequestGet(context) {
       // Successfully got access token
       console.log('Installation successful for team:', tokenData.team.name);
       
-      // Store the installation data (you'll need to implement this)
-      await storeInstallationData(tokenData, env);
+      // Store the installation data
+      await storeInstallationData(tokenData);
       
-      return new Response(createSuccessPage(tokenData.team.name), {
-        headers: { 'Content-Type': 'text/html' }
-      });
+      return {
+        statusCode: 200,
+        headers: { 'Content-Type': 'text/html' },
+        body: createSuccessPage(tokenData.team.name)
+      };
     } else {
       console.error('Slack OAuth error:', tokenData);
-      return new Response(createErrorPage(`Slack error: ${tokenData.error}`), {
+      return {
+        statusCode: 400,
         headers: { 'Content-Type': 'text/html' },
-        status: 400
-      });
+        body: createErrorPage(`Slack error: ${tokenData.error}`)
+      };
     }
   } catch (error) {
     console.error('OAuth exchange failed:', error);
-    return new Response(createErrorPage('Installation failed. Please try again.'), {
+    return {
+      statusCode: 500,
       headers: { 'Content-Type': 'text/html' },
-      status: 500
-    });
+      body: createErrorPage('Installation failed. Please try again.')
+    };
   }
-}
+};
 
-async function storeInstallationData(tokenData, env) {
-  // For now, just log the installation
-  // You can later add storage logic here
-  console.log('New installation:', {
+async function storeInstallationData(tokenData) {
+  // Log the installation data
+  console.log('New Slack app installation:', {
     team_id: tokenData.team.id,
     team_name: tokenData.team.name,
     bot_user_id: tokenData.bot_user_id,
-    access_token: tokenData.access_token // Store this securely!
+    access_token: tokenData.access_token.substring(0, 10) + '...', // Don't log full token
+    installed_at: new Date().toISOString()
   });
   
-  // Optional: Send to a webhook or external service
-  // if (env.WEBHOOK_URL) {
-  //   await fetch(env.WEBHOOK_URL, {
-  //     method: 'POST',
-  //     headers: { 'Content-Type': 'application/json' },
-  //     body: JSON.stringify({
-  //       team_id: tokenData.team.id,
-  //       team_name: tokenData.team.name,
-  //       access_token: tokenData.access_token,
-  //       installed_at: new Date().toISOString()
-  //     })
-  //   });
-  // }
+  // Optional: Send to external webhook/database
+  // You could add code here to store in:
+  // - Airtable
+  // - Google Sheets
+  // - External webhook
+  // - Database
+  
+  // Example webhook (uncomment if you want to use):
+  /*
+  if (process.env.WEBHOOK_URL) {
+    try {
+      await fetch(process.env.WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          team_id: tokenData.team.id,
+          team_name: tokenData.team.name,
+          access_token: tokenData.access_token,
+          bot_user_id: tokenData.bot_user_id,
+          installed_at: new Date().toISOString()
+        })
+      });
+    } catch (err) {
+      console.error('Failed to send to webhook:', err);
+    }
+  }
+  */
 }
 
 function createSuccessPage(teamName) {
